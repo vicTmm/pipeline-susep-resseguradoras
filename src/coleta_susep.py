@@ -22,7 +22,7 @@ def consultar_tipo(page: Page, tipo_texto: str) -> Table:
 
     selects = page.locator("select")
     if selects.count() == 0:
-        raise RuntimeError("Nenhum campo de selecao encontrado na pagina da SUSEP.")
+        raise RuntimeError("Nenhum campo de seleção encontrado na página da SUSEP.")
 
     tipo_select = None
     for index in range(selects.count()):
@@ -33,7 +33,7 @@ def consultar_tipo(page: Page, tipo_texto: str) -> Table:
             break
 
     if tipo_select is None:
-        raise RuntimeError("Nao foi possivel identificar o campo de tipo de empresa.")
+        raise RuntimeError("Não foi possível identificar o campo de tipo de empresa.")
 
     tipo_select.select_option(label=tipo_texto)
 

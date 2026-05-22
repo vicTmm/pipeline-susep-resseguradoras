@@ -217,7 +217,7 @@ __marimo__/
 # Streamlit
 .streamlit/secrets.toml
 
-# Dados e saidas gerados pelo pipeline
+# Dados e saídas gerados pelo pipeline
 data/raw/*
 data/processed/*
 data/history/*

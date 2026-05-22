@@ -16,7 +16,7 @@ REPORTS_DIR = OUTPUTS_DIR / "reports"
 
 
 def ensure_project_dirs() -> None:
-    """Cria as pastas usadas pelo pipeline, caso ainda nao existam."""
+    """Cria as pastas usadas pelo pipeline, caso ainda não existam."""
     for directory in [RAW_DIR, PROCESSED_DIR, HISTORY_DIR, LOGS_DIR, REPORTS_DIR]:
         directory.mkdir(parents=True, exist_ok=True)
 

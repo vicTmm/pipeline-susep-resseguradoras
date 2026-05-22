@@ -23,7 +23,7 @@ def rows_equal(old_row: Row, new_row: Row) -> bool:
 
 
 def summarize_changes(old_row: Row, new_row: Row) -> str:
-    """Descreve quais campos mudaram para facilitar revisao operacional."""
+    """Descreve quais campos mudaram para facilitar revisão operacional."""
     changes = []
     ignored = {"chave_monitoramento"}
 
@@ -37,7 +37,7 @@ def summarize_changes(old_row: Row, new_row: Row) -> str:
 
 
 def compare_tables(old_rows: Table, new_rows: Table) -> dict[str, Table]:
-    """Classifica diferencas entre a ultima base historica e a base atual."""
+    """Classifica diferenças entre a última base histórica e a base atual."""
     old_by_key = {row["chave_monitoramento"]: row for row in old_rows}
     new_by_key = {row["chave_monitoramento"]: row for row in new_rows}
 
@@ -72,7 +72,7 @@ def count_by_tipo(rows: Table) -> dict[str, int]:
 
 
 def write_changes_csv(path: Path, diff_result: dict[str, Table]) -> None:
-    """Gera uma base tabular de evidencias para auditoria e analise."""
+    """Gera uma base tabular de evidências para auditoria e análise."""
     path.parent.mkdir(parents=True, exist_ok=True)
     rows: Table = []
 
@@ -98,7 +98,7 @@ def write_markdown_report(
     history_file: Path,
     current_file: Path,
 ) -> None:
-    """Gera um resumo executivo da execucao do monitoramento."""
+    """Gera um resumo executivo da execução do monitoramento."""
     path.parent.mkdir(parents=True, exist_ok=True)
     generated_at = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
     total_changes = len(diff_result["added"]) + len(diff_result["removed"]) + len(diff_result["changed"])
@@ -107,17 +107,17 @@ def write_markdown_report(
         "# Monitoramento SUSEP - Resseguradoras",
         "",
         f"Gerado em: {generated_at}",
-        f"Fonte regulatoria: {SOURCE_URL}",
-        f"Base historica comparada: `{history_file.name}`",
+        f"Fonte regulatória: {SOURCE_URL}",
+        f"Base histórica comparada: `{history_file.name}`",
         f"Base atual: `{current_file.name}`",
         "",
         "## Resumo executivo",
         "",
-        f"- Total de alteracoes relevantes: {total_changes}",
+        f"- Total de alterações relevantes: {total_changes}",
         f"- Novos registros: {len(diff_result['added'])}",
         f"- Registros removidos: {len(diff_result['removed'])}",
         f"- Registros alterados: {len(diff_result['changed'])}",
-        "- Evidencia gerada: relatorio CSV detalhado e snapshot historico da base atual",
+        "- Evidência gerada: relatório CSV detalhado e snapshot histórico da base atual",
         "",
     ]
 

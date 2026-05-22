@@ -42,13 +42,13 @@ def clean_value(value: object) -> str:
 
 
 def build_monitoring_key(row: Row) -> str:
-    """Cria uma chave estavel para comparar a mesma entidade entre execucoes."""
+    """Cria uma chave estável para comparar a mesma entidade entre execuções."""
     identifier = row.get("entcodigo") or row.get("cnpj") or row.get("nome")
     return f"{row.get('tipo', '').lower()}::{identifier.lower()}"
 
 
 def normalize_rows(rows: Table) -> Table:
-    """Padroniza a base coletada para reduzir ruido na comparacao historica."""
+    """Padroniza a base coletada para reduzir ruído na comparação histórica."""
     normalized: Table = []
 
     for row in rows:
