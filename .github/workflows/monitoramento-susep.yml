@@ -3,7 +3,7 @@ name: Monitoramento SUSEP
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 11 * * 1-5"
+    - cron: "30 12 * * 1-5"
 
 concurrency:
   group: monitoramento-susep
