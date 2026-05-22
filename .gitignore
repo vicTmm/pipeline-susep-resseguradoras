@@ -220,11 +220,7 @@ __marimo__/
 # Dados e saídas gerados pelo pipeline
 data/raw/*
 data/processed/*
-data/history/*
 outputs/logs/*
-outputs/reports/*
 !data/raw/.gitkeep
 !data/processed/.gitkeep
-!data/history/.gitkeep
 !outputs/logs/.gitkeep
-!outputs/reports/.gitkeep
