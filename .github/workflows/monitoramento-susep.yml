@@ -1,0 +1,42 @@
+name: Monitoramento SUSEP
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 11 * * 1-5"
+
+concurrency:
+  group: monitoramento-susep
+  cancel-in-progress: false
+
+jobs:
+  monitoramento:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Instalar dependencias
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          python -m playwright install --with-deps chromium
+
+      - name: Executar monitoramento
+        run: python -m src.main
+
+      - name: Publicar artefatos
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: monitoramento-susep
+          retention-days: 30
+          path: |
+            data/
+            outputs/
