@@ -66,10 +66,10 @@ pipeline-susep-resseguradoras/
 
 Requisito: Python 3.10 ou superior.
 
-Crie e ative um ambiente virtual:
+No Windows, crie o ambiente virtual usando o launcher `py`:
 
 ```powershell
-python -m venv .venv
+py -3.14 -m venv .venv
 .\.venv\Scripts\Activate.ps1
 ```
 
